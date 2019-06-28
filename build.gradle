@@ -1,0 +1,36 @@
+//定义spring-boot版本 从settings.gradle pluginManagement定义的repo获取
+plugins {
+    id 'org.springframework.boot' version '2.1.5.RELEASE'
+}
+// version = "0.0.2-SNAPSHOT"
+subprojects {
+    if(project.getBuildFile().exists()){
+        repositories {
+            mavenLocal()
+            maven{
+                url= 'http://maven.aliyun.com/nexus/content/groups/public'
+            }
+            mavenCentral()
+            jcenter()
+        }
+    }
+
+}
+//声明一些空包不产生jar
+/*project(":spring_boot"){
+    jar { enabled = false }
+    bootJar { enabled = false }
+}
+project(":spring_cloud"){
+    jar { enabled = false }
+    bootJar { enabled = false }
+}
+project(":spring_boot:springboot_in_action"){
+    jar { enabled = false }
+    bootJar { enabled = false }
+}
+project(":spring_boot:springboot_demos"){
+    jar { enabled = false }
+    bootJar { enabled = false }
+}*/
+
